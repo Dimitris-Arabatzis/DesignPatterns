@@ -42,9 +42,29 @@ namespace Prototype
             });
 
             Task.WaitAll(t1,t2);
+
+            //---------------------Ambient Context Pattern---------------------
+
+            var house = new Building();
+
+            //ground floor 3000
+            using(new BuildingContext(3000))
+            {
+
+                house.walls.Add(new Wall(new Point(0, 0), new Point(5000, 0)));
+                house.walls.Add(new Wall(new Point(0, 0), new Point(0, 4000)));
+
+                using (new BuildingContext(3500))
+                {
+                    //1st floor 3500
+                    house.walls.Add(new Wall(new Point(0, 0), new Point(6000, 0)));
+                    house.walls.Add(new Wall(new Point(0, 0), new Point(0, 4000)));
+                }
+                //1st floor 3000
+                house.walls.Add(new Wall(new Point(5000, 0), new Point(5000, 4000)));
+            }
+
+            WriteLine(house);
         }
-
-
-
     }
 }
