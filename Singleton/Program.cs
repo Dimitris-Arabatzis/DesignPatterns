@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using static System.Console;
 
 namespace Prototype
@@ -26,6 +27,21 @@ namespace Prototype
             var ceo = new MonostateCEO() { Name = "Martin", Age = 26 };
             var ceo2 = new MonostateCEO();
             WriteLine(ceo2);
+
+
+            //---------------------Monostate Singleton Pattern---------------------
+
+            var t1 = Task.Factory.StartNew(() =>
+            {
+                WriteLine($"t1: " + PerThreadSingleton.Instance.Id);
+            });
+            var t2 = Task.Factory.StartNew(() =>
+            {
+                WriteLine($"t2: " + PerThreadSingleton.Instance.Id);
+                WriteLine($"t2: " + PerThreadSingleton.Instance.Id);
+            });
+
+            Task.WaitAll(t1,t2);
         }
 
 
