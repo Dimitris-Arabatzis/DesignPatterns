@@ -66,5 +66,15 @@ namespace Prototype
 
             WriteLine(house);
         }
+
+        public static bool IsSingleton(Func<object> func)
+        {
+            var a = func();
+            var b = func();
+            if (a.Equals(b))
+                return true;
+            else
+                return false;
+        }
     }
 }
