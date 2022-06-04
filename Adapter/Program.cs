@@ -14,17 +14,12 @@ namespace Adapter
     /// </summary>
     internal class Program
     {
-        private static readonly List<VectorObject> vectorObjects
-            = new List<VectorObject>()
-            {
-                new VectorRectangle(1,1,10,10),
-                new VectorRectangle(3,3,6,6)
-            };
+        
 
         static void Main(string[] args)
         {
             //---------------------Simple Adapter---------------------
-            Draw();
+            AdapterExecutor.Draw();
             //---------------------Adapter in DI---------------------
 
             var b = new ContainerBuilder();
@@ -43,23 +38,6 @@ namespace Adapter
                 foreach (var btn in editor.Buttons)
                     btn.PrintMe();
             }
-        }
-
-        private static void Draw()
-        {
-            foreach (var vo in vectorObjects)
-            {
-                foreach (var line in vo)
-                {
-                    var adapter = new LineToPointAdapter(line);
-                    adapter.ForEach(DrawPoint);
-                }
-            }
-        }
-
-        public static void DrawPoint(Point p)
-        {
-            Write(".");
         }
     }
 }

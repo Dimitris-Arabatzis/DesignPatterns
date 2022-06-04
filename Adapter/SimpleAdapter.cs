@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoreLinq;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -75,6 +76,33 @@ namespace Adapter
             Add(new Line(new Point(x + width, y), new Point(x + width, y + height)));
             Add(new Line(new Point(x, y), new Point(x, y + height)));
             Add(new Line(new Point(x, y + height), new Point(x + width, y + height)));
+        }
+    }
+
+    public class AdapterExecutor
+    {
+        private static readonly List<VectorObject> vectorObjects
+            = new List<VectorObject>()
+            {
+                new VectorRectangle(1,1,10,10),
+                new VectorRectangle(3,3,6,6)
+            };
+
+        public static void Draw()
+        {
+            foreach (var vo in vectorObjects)
+            {
+                foreach (var line in vo)
+                {
+                    var adapter = new LineToPointAdapter(line);
+                    adapter.ForEach(DrawPoint);
+                }
+            }
+        }
+
+        public static void DrawPoint(Point p)
+        {
+            Write(".");
         }
     }
 }
