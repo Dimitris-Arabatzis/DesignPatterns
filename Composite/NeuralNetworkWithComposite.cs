@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Composite
 {
-    public static class ExtensionMethods
+    public static partial class ExtensionMethods
     {
         public static void ConnectTo(this IEnumerable<Neuron> self, IEnumerable<Neuron> other)
         {
