@@ -15,7 +15,13 @@
               .AppendLine("{")
               .AppendLine("}");
             Console.WriteLine(cb);
-            //---------------------Custom String Builder---------------------
+
+            //---------------------Adapter Decorator---------------------
+
+            MyStringBuilder msb = "Hello ";
+            msb += "world";
+            Console.WriteLine(msb);
+
         }
     }
 }
