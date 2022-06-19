@@ -10,7 +10,11 @@ namespace Proxy
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            //---------------------Protection Proxy---------------------
+            ICar car = new CarProxy(new Driver(age: 12));
+            ICar car2 = new CarProxy(new Driver(age: 22));
+            car.Drive();
+            car2.Drive();
         }
     }
 }
