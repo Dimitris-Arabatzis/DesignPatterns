@@ -15,6 +15,15 @@ namespace Proxy
             ICar car2 = new CarProxy(new Driver(age: 22));
             car.Drive();
             car2.Drive();
+
+            //---------------------Value Proxy---------------------
+            Console.WriteLine(
+                10f * 5.Percent()
+                );
+
+            Console.WriteLine(
+                2.Percent() + 3.Percent()
+                );
         }
     }
 }
