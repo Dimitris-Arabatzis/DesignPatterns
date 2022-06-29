@@ -47,11 +47,6 @@ namespace ChainOfResponsibility
         {
         }
 
-        public void Add(CreatureModifier cm)
-        {
-            if (next != null) next.Add(cm);
-            else next = cm;
-        }
         public override void Handle() 
         {
             Console.WriteLine($"Doubling {creature.Name}'s attack");
