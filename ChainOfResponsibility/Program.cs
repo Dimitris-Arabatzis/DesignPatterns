@@ -27,7 +27,21 @@
 
             root.Handle();
             Console.WriteLine(goblin);
+            //-------------------Broker Chain-------------------
+            Console.WriteLine("\n\n\n");
+            var game = new Game();
+            var marine = new Soldier(game, "Ryan", 3, 3);
+            Console.WriteLine(marine);
 
+            using(new SoldierDoubleAttackModifier(game, marine))
+            {
+                Console.WriteLine(marine);
+                using (new SoldierIncreaseDefenseModifier(game, marine))
+                {
+                    Console.WriteLine(marine);
+                }
+            }
+            Console.WriteLine(marine);
         }
     }
 }
