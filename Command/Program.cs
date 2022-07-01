@@ -24,6 +24,13 @@ namespace Command
             commands.ForEach(c => c.Call());
 
             WriteLine(ba);
+            //-------------------Undo Command-------------------
+            foreach (var c in Enumerable.Reverse(commands))
+            {
+                c.Undo();
+            }
+
+            WriteLine(ba);
         }
     }
 }

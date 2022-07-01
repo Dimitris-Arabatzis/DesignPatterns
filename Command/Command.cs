@@ -18,13 +18,15 @@ namespace Command
             WriteLine($"Deposited ${amount}, balance is now {balance}");
         }
 
-        internal void Withdraw(int amount)
+        internal bool Withdraw(int amount)
         {
             if(balance-amount >= overdraftLimit)
             {
                 balance -= amount;
                 WriteLine($"Withdrew ${amount}, balance is now {balance}");
+                return true;
             }
+            return false;
         }
 
         public override string? ToString()
@@ -36,6 +38,7 @@ namespace Command
     internal interface ICommand
     {
         void Call();
+        void Undo();
     }
 
     internal class BankAccountCommand : ICommand
@@ -48,6 +51,7 @@ namespace Command
         }
         private Action action;
         private int amount;
+        private bool succeeded;
 
         public BankAccountCommand(BankAccount account, Action action, int amount)
         {
@@ -58,17 +62,38 @@ namespace Command
 
         public void Call()
         {
+            
             switch (action)
             {
                 case Action.Deposit:
                     account.Deposit(amount);
+                    succeeded = true;
                     break;
                 case Action.Withdraw:
-                    account.Withdraw(amount);
+                    succeeded = account.Withdraw(amount);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        public void Undo()
+        {
+            if (!succeeded)
+                return;
+
+            switch (action)
+            {
+                case Action.Deposit:
+                    account.Withdraw(amount);
+                    break;
+                case Action.Withdraw:
+                    account.Deposit(amount);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
         }
     }
 }
