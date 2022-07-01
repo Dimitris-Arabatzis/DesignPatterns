@@ -1,4 +1,7 @@
-﻿namespace Command
+﻿
+using static System.Console;
+
+namespace Command
 {
     internal class Program
     {
@@ -9,7 +12,18 @@
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            
+            //-------------------Command-------------------
+            var ba = new BankAccount();
+            var commands = new List<BankAccountCommand>
+            {
+                new BankAccountCommand(ba,BankAccountCommand.Action.Deposit,100),
+                new BankAccountCommand(ba,BankAccountCommand.Action.Withdraw,50),
+            };
+            WriteLine(ba);
+
+            commands.ForEach(c => c.Call());
+
+            WriteLine(ba);
         }
     }
 }
