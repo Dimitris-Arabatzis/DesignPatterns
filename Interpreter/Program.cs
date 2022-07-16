@@ -1,5 +1,5 @@
-﻿
-using Interpreter;
+﻿using Interpreter;
+using Interpreter.Exercise;
 using System.Text;
 using static System.Console;
 
@@ -23,6 +23,10 @@ namespace Command
             //-------------------Parsing-------------------
             var parsed = Parse(tokens);
             WriteLine($"{input} = {parsed.Value}");
+            //-------------------Exercise-------------------
+            var ep = new ExpressionProcessor();
+            ep.Variables.Add('x', 5);
+            WriteLine(ep.Calculate("1+x"));
         }
 
 
