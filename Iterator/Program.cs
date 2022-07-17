@@ -9,7 +9,24 @@
         static void Main(string[] args)
         {
             //------------------- -------------------
+            //   1
+            //  / \
+            // 2   3
 
+            //in-order: 2,1,3
+            //preorder: 1,2,3
+            var root = new Node<int>(1,
+                new Node<int>(2),
+                new Node<int>(3)
+                );
+
+            var it = new InOrderIterator<int>(root);
+            while (it.MoveNext())
+            {
+                Console.Write(it.Current.Value);
+                Console.Write(',');
+            }
+            Console.WriteLine();
 
         }
     }
