@@ -8,7 +8,7 @@
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            //------------------- -------------------
+            //------------------- Iterator Object -------------------
             //   1
             //  / \
             // 2   3
@@ -27,6 +27,10 @@
                 Console.Write(',');
             }
             Console.WriteLine();
+
+            //------------------- Iterator Method-------------------
+            var tree = new BinaryTree<int>(root);
+            Console.WriteLine(string.Join(",", tree.InOrder.Select(x=>x.Value)));
 
         }
     }
