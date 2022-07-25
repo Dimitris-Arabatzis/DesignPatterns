@@ -31,7 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interpreter", "Interpreter\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iterator", "Iterator\Iterator.csproj", "{013E92F7-CE6F-44BD-92D2-1601842C9D06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NullObject", "NullObject\NullObject.csproj", "{CFED23B8-717A-40AA-9303-EF8B6B508B03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NullObject", "NullObject\NullObject.csproj", "{CFED23B8-717A-40AA-9303-EF8B6B508B03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memento", "Memento\Memento.csproj", "{CCA7BCF2-B808-4E0E-A755-053186C55509}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{CFED23B8-717A-40AA-9303-EF8B6B508B03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFED23B8-717A-40AA-9303-EF8B6B508B03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFED23B8-717A-40AA-9303-EF8B6B508B03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCA7BCF2-B808-4E0E-A755-053186C55509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCA7BCF2-B808-4E0E-A755-053186C55509}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCA7BCF2-B808-4E0E-A755-053186C55509}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCA7BCF2-B808-4E0E-A755-053186C55509}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
