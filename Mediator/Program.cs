@@ -33,7 +33,31 @@ namespace Mediator
 
             martin.PrivateMessage("Helen", "Glad you are here!");
 
-            
+            //------------------- Event Broker -------------------
+
+            var cb = new ContainerBuilder();
+            cb.RegisterType<EventBroker>().SingleInstance();
+            cb.RegisterType<FootballCoach>();
+            cb.Register((c, p) =>
+                new FootballPlayer(
+                    c.Resolve<EventBroker>(),
+                    p.Named<string>("name")
+                ));
+
+            using (var c = cb.Build())
+            {
+                var coach = c.Resolve<FootballCoach>();
+
+                var player1 = c.Resolve<FootballPlayer>(new NamedParameter("name", "Martin"));
+                var player2 = c.Resolve<FootballPlayer>(new NamedParameter("name", "Stratis"));
+                var player3 = c.Resolve<FootballPlayer>(new NamedParameter("name", "Irena"));
+
+                player1.Score();
+                player1.Score();
+                player1.Score();
+                player1.AssaultReferee();
+                player2.Score();
+            }
         }
     }
 }
