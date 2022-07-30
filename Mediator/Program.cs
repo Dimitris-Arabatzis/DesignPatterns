@@ -1,4 +1,6 @@
-﻿namespace Mediator
+﻿using Autofac;
+
+namespace Mediator
 {
 
 
@@ -12,8 +14,26 @@
     {
         static void Main(string[] args)
         {
-            //------------------- Mediator -------------------
+            //------------------- ChatRoom Mediator -------------------
+            var room = new ChatRoom();
 
+
+            var martin = new Person("Martin");
+            var john = new Person("John");
+            var helen = new Person("Helen");
+
+            room.Join(martin);
+            room.Join(john);
+
+            john.Say("hi!");
+            martin.Say("hello!");
+
+            room.Join(helen);
+            helen.Say("Hey there everyone!");
+
+            martin.PrivateMessage("Helen", "Glad you are here!");
+
+            
         }
     }
 }
