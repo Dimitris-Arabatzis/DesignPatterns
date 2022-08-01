@@ -79,6 +79,25 @@ namespace MediatorDP
             var response = await mediator.Send(new PingCommand());
 
             Console.WriteLine($"We got a response at {response.TimeStamp}");
+
+            //------------------- Exercise -------------------
+            var exerciseMediator = new Coding.Exercise.Mediator();
+
+            var participant1 = new Coding.Exercise.Participant(exerciseMediator);
+            var participant2 = new Coding.Exercise.Participant(exerciseMediator);
+
+            Console.WriteLine($"Participant 1: {participant1.Value}");
+            Console.WriteLine($"Participant 2: {participant2.Value}");
+
+            participant1.Say(3);
+            Console.WriteLine($"Participant 1: {participant1.Value}");
+            Console.WriteLine($"Participant 2: {participant2.Value}");
+
+            participant2.Say(2);
+            Console.WriteLine($"Participant 1: {participant1.Value}");
+            Console.WriteLine($"Participant 2: {participant2.Value}");
+
+
         }
     }
 }
