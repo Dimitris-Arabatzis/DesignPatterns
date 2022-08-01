@@ -6,7 +6,7 @@ using System.Reactive.Subjects;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mediator
+namespace MediatorDP
 {
 
     public class Actor

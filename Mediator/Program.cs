@@ -1,6 +1,7 @@
 ﻿using Autofac;
+using MediatR;
 
-namespace Mediator
+namespace MediatorDP
 {
 
 
@@ -12,7 +13,7 @@ namespace Mediator
     /// </summary>
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             //------------------- ChatRoom Mediator -------------------
             var room = new ChatRoom();
@@ -58,6 +59,26 @@ namespace Mediator
                 player1.AssaultReferee();
                 player2.Score();
             }
+
+            //------------------- MediatR -------------------
+
+            var builder = new ContainerBuilder();
+            builder.RegisterType<Mediator>().As<IMediator>().InstancePerLifetimeScope();
+
+            builder.Register<ServiceFactory>(ctx =>
+            {
+                var c = ctx.Resolve<IComponentContext>();
+                return t => c.Resolve(t);
+            });
+
+            builder.RegisterAssemblyTypes(typeof(Program).Assembly).AsImplementedInterfaces();
+
+            var container = builder.Build();
+            var mediator = container.Resolve<IMediator>();
+
+            var response = await mediator.Send(new PingCommand());
+
+            Console.WriteLine($"We got a response at {response.TimeStamp}");
         }
     }
 }
