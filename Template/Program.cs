@@ -10,7 +10,13 @@
     {
         static void Main(string[] args)
         {
-            
+            //--------------------- Template ---------------------
+
+            var chess = new Chess();
+            chess.Run();
+
+            //--------------------- Template ---------------------
+
         }
     }
 }
